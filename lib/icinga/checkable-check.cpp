@@ -338,8 +338,11 @@ void Checkable::ProcessCheckResult(const CheckResult::Ptr& cr, const MessageOrig
 		    << "State Change: Checkable " << GetName() << " soft state change from " << old_state_str << " to " << new_state_str << " detected.";
 	}
 
-	if (GetStateType() == StateTypeSoft || hardChange || recovery || is_volatile)
+	if (GetStateType() == StateTypeSoft || hardChange || recovery || is_volatile) {
 		ExecuteEventHandler();
+	} else {
+		ExecuteEventHandler();
+	}
 
 	if (send_downtime_notification)
 		OnNotificationsRequested(this, in_downtime ? NotificationDowntimeStart : NotificationDowntimeEnd, cr, "", "");
