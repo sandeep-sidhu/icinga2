@@ -1388,6 +1388,10 @@ void DbEvents::AddCheckableCheckHistory(const Checkable::Ptr& checkable, const C
 void DbEvents::AddEventHandlerHistory(const Checkable::Ptr& checkable)
 {
 	Log(LogDebug, "DbEvents")
+	    << "Skipping add eventhandler for '" << checkable->GetName() << "'";
+	return;
+	
+	Log(LogDebug, "DbEvents")
 	    << "add eventhandler history for '" << checkable->GetName() << "'";
 
 	double now = Utility::GetTime();
